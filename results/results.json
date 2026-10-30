@@ -1,0 +1,358 @@
+{
+  "midnight_fixed": 365,
+  "gaps_after_fix": 0,
+  "outliers": [
+    {
+      "column": "usage_kwh",
+      "lower_limit": -68.86,
+      "upper_limit": 123.29,
+      "outliers": 328,
+      "percent": 0.94
+    },
+    {
+      "column": "lag_reactive",
+      "lower_limit": -28.21,
+      "upper_limit": 53.15,
+      "outliers": 1059,
+      "percent": 3.02
+    },
+    {
+      "column": "lead_reactive",
+      "lower_limit": -3.13,
+      "upper_limit": 5.22,
+      "outliers": 7759,
+      "percent": 22.14
+    },
+    {
+      "column": "lag_pf",
+      "lower_limit": 9.77,
+      "upper_limit": 152.58,
+      "outliers": 1,
+      "percent": 0.0
+    },
+    {
+      "column": "lead_pf",
+      "lower_limit": 99.25,
+      "upper_limit": 100.45,
+      "outliers": 8327,
+      "percent": 23.76
+    }
+  ],
+  "cleaning_log": [
+    {
+      "step": "Rename columns",
+      "what_I_did": "Gave short names to all 11 columns",
+      "items_affected": 11
+    },
+    {
+      "step": "Missing values",
+      "what_I_did": "Checked with isna()",
+      "items_affected": 0
+    },
+    {
+      "step": "Duplicate rows",
+      "what_I_did": "Checked with duplicated()",
+      "items_affected": 0
+    },
+    {
+      "step": "Wrong dates (inconsistent data)",
+      "what_I_did": "Moved midnight readings to the correct day and sorted",
+      "items_affected": 365
+    },
+    {
+      "step": "Day and weekend labels",
+      "what_I_did": "Compared with the real calendar",
+      "items_affected": 0
+    },
+    {
+      "step": "Impossible values",
+      "what_I_did": "Power factor outside 0-100 or negative energy",
+      "items_affected": 0
+    },
+    {
+      "step": "Possible meter failure",
+      "what_I_did": "One row with usage 0 and power factor 0, kept it",
+      "items_affected": 1
+    },
+    {
+      "step": "Outliers",
+      "what_I_did": "Checked with the IQR rule, kept them because they are real values",
+      "items_affected": 17474
+    }
+  ],
+  "clean_rows": 35040,
+  "clean_cols": 19,
+  "usage_stats": {
+    "mean": 27.386892408675802,
+    "median": 4.57,
+    "std": 33.44437970801512,
+    "min": 0.0,
+    "max": 157.18,
+    "total": 959636.7100000001
+  },
+  "load_counts": {
+    "Light_Load": 18072,
+    "Medium_Load": 9696,
+    "Maximum_Load": 7272
+  },
+  "corr_with_usage": {
+    "usage_kwh": 1.0,
+    "lag_reactive": 0.896,
+    "lead_reactive": -0.325,
+    "co2": 0.988,
+    "lag_pf": 0.386,
+    "lead_pf": 0.354,
+    "hour": 0.214,
+    "is_weekend": -0.295
+  },
+  "o1": {
+    "F": 10787.797530542848,
+    "p": 0.0,
+    "table": [
+      {
+        "load_type": "Light_Load",
+        "count": 18072,
+        "mean": 8.63,
+        "median": 3.31,
+        "std": 17.91,
+        "min": 0.0,
+        "max": 140.29
+      },
+      {
+        "load_type": "Medium_Load",
+        "count": 9696,
+        "mean": 38.45,
+        "median": 34.44,
+        "std": 35.22,
+        "min": 2.52,
+        "max": 157.18
+      },
+      {
+        "load_type": "Maximum_Load",
+        "count": 7272,
+        "mean": 59.27,
+        "median": 56.63,
+        "std": 29.75,
+        "min": 2.92,
+        "max": 151.67
+      }
+    ]
+  },
+  "o2": {
+    "weekday_mean": 33.62472701149425,
+    "weekend_mean": 11.73232672275641,
+    "drop_pct": 65.10803873962801,
+    "t": 72.76994286810672,
+    "p": 0.0,
+    "weekday_count": 25056,
+    "weekend_count": 9984
+  },
+  "o3": {
+    "peak_hour": 9,
+    "peak_hour_value": 57.81034246575343,
+    "low_hour": 5,
+    "low_hour_value": 4.226260273972603,
+    "noon_value": 7.101849315068494,
+    "eleven_value": 55.86850684931507,
+    "peak_month": "Jan",
+    "peak_month_value": 42.41878024193548,
+    "low_month": "Dec",
+    "low_month_value": 19.97203629032258,
+    "shift": {
+      "Evening": 40.26,
+      "Morning": 36.07,
+      "Night": 5.84
+    },
+    "hourly": {
+      "0": 7.83,
+      "1": 5.22,
+      "2": 4.41,
+      "3": 4.35,
+      "4": 4.3,
+      "5": 4.23,
+      "6": 4.24,
+      "7": 4.94,
+      "8": 51.08,
+      "9": 57.81,
+      "10": 55.92,
+      "11": 55.87,
+      "12": 7.1,
+      "13": 51.58,
+      "14": 56.01,
+      "15": 55.45,
+      "16": 54.76,
+      "17": 37.42,
+      "18": 36.3,
+      "19": 38.12,
+      "20": 33.62,
+      "21": 10.36,
+      "22": 8.38,
+      "23": 7.98
+    },
+    "monthly": {
+      "Jan": 42.42,
+      "Feb": 34.04,
+      "Mar": 26.96,
+      "Apr": 27.35,
+      "May": 26.57,
+      "Jun": 22.71,
+      "Jul": 27.44,
+      "Aug": 23.04,
+      "Sep": 20.1,
+      "Oct": 28.45,
+      "Nov": 29.94,
+      "Dec": 19.97
+    }
+  },
+  "o4": {
+    "r_lag": 0.8961499010002223,
+    "r_lead": -0.3249217839454453,
+    "r_pf": 0.38596046141414386,
+    "r_co2": 0.988179771678963,
+    "pf_table": [
+      {
+        "pf_group": "Fair (70 to 90)",
+        "count": 8479,
+        "mean": 42.32
+      },
+      {
+        "pf_group": "Good (90 and above)",
+        "count": 15833,
+        "mean": 35.5
+      },
+      {
+        "pf_group": "Poor (below 70)",
+        "count": 10728,
+        "mean": 3.61
+      }
+    ]
+  },
+  "split": {
+    "train": 28032,
+    "test": 7008,
+    "features": [
+      "lag_reactive",
+      "lead_reactive",
+      "lag_pf",
+      "lead_pf",
+      "hour",
+      "month",
+      "dow_num",
+      "is_weekend",
+      "total_reactive",
+      "avg_pf"
+    ]
+  },
+  "o5": {
+    "table": [
+      {
+        "Model": "Random Forest",
+        "MAE": 0.2499,
+        "MSE": 0.4939,
+        "RMSE": 0.7028,
+        "Test R2": 0.9996,
+        "Train R2": 0.9999
+      },
+      {
+        "Model": "Decision Tree",
+        "MAE": 1.1497,
+        "MSE": 5.2532,
+        "RMSE": 2.292,
+        "Test R2": 0.9954,
+        "Train R2": 0.9968
+      },
+      {
+        "Model": "Polynomial Regression (degree 2)",
+        "MAE": 2.9168,
+        "MSE": 20.594,
+        "RMSE": 4.5381,
+        "Test R2": 0.9819,
+        "Train R2": 0.9822
+      },
+      {
+        "Model": "Multiple Linear Regression",
+        "MAE": 7.0718,
+        "MSE": 100.8957,
+        "RMSE": 10.0447,
+        "Test R2": 0.9112,
+        "Train R2": 0.9138
+      }
+    ],
+    "best": "Random Forest",
+    "importance": {
+      "lag_reactive": 0.8438,
+      "avg_pf": 0.0954,
+      "lag_pf": 0.0305,
+      "total_reactive": 0.0277,
+      "month": 0.0016,
+      "lead_pf": 0.0005,
+      "lead_reactive": 0.0003,
+      "dow_num": 0.0001,
+      "hour": 0.0001,
+      "is_weekend": 0.0
+    },
+    "new_months": [
+      {
+        "Model": "Multiple Linear Regression",
+        "R2": 0.9121,
+        "MAE": 7.1875,
+        "RMSE": 9.4727
+      },
+      {
+        "Model": "Random Forest",
+        "R2": 0.9996,
+        "MAE": 0.2485,
+        "RMSE": 0.6767
+      }
+    ]
+  },
+  "figures": [
+    {
+      "file": "fig01_boxplots.png",
+      "caption": "Box plots of the main numeric columns to check outliers"
+    },
+    {
+      "file": "fig02_distribution.png",
+      "caption": "Distribution of energy usage and number of readings in each load type"
+    },
+    {
+      "file": "fig03_correlation.png",
+      "caption": "Correlation heatmap of the numeric columns"
+    },
+    {
+      "file": "fig04_load_type_usage.png",
+      "caption": "Energy usage in Light, Medium and Maximum load periods"
+    },
+    {
+      "file": "fig05_weekday_hour.png",
+      "caption": "Weekday and weekend usage, and average usage in each hour"
+    },
+    {
+      "file": "fig06_monthly.png",
+      "caption": "Average energy usage in each month of 2018"
+    },
+    {
+      "file": "fig07_scatter.png",
+      "caption": "Energy usage against lagging reactive power"
+    },
+    {
+      "file": "fig08_model_comparison.png",
+      "caption": "Comparison of the four regression models"
+    },
+    {
+      "file": "fig09_actual_vs_predicted.png",
+      "caption": "Actual and predicted usage of the best model"
+    },
+    {
+      "file": "fig10_feature_importance.png",
+      "caption": "Feature importance of the Random Forest model"
+    }
+  ],
+  "dataset": {
+    "rows": 35040,
+    "start": "2018-01-01 00:15:00",
+    "end": "2019-01-01 00:00:00"
+  },
+  "raw_rows": 35040,
+  "raw_cols": 11
+}

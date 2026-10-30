@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Steel Plant Energy Dashboard | INT234 CA2</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><span class="dot"></span> Steel Plant Energy Dashboard</a>
+    <nav><a href="#insights">Graphs</a><a href="#models">Models</a><a href="#predict">Predictor</a><a href="#gallery">All 10 graphs</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">INT234 Predictive Analytics &middot; CA2 project</p>
+      <h1>Steel plant electricity usage</h1>
+      <p class="lead">This page shows the main results of my project. It uses 35,040 readings taken every 15 minutes in 2018. The Random Forest model that I trained in the notebook is used in the predictor below.</p>
+      <div class="kpis" id="kpis"></div>
+    </div>
+  </section>
+
+  <section id="insights" class="wrap block">
+    <h2>Main graphs</h2>
+    <div class="grid3">
+      <article class="card wide"><h3>Usage in each hour of the day</h3><p class="sub">Average kWh per 15 minutes</p><canvas id="cHour" height="260"></canvas></article>
+      <article class="card"><h3>Load types</h3><p class="sub">Number of readings</p><canvas id="cLoad" height="240"></canvas><ul class="legend" id="loadLegend"></ul></article>
+      <article class="card wide"><h3>Usage in each month</h3><p class="sub">Average kWh per 15 minutes</p><canvas id="cMonth" height="240"></canvas></article>
+      <article class="card"><h3>What I found</h3><ul class="findings" id="findList"></ul></article>
+    </div>
+  </section>
+
+  <section id="models" class="wrap block">
+    <h2>The 4 models</h2>
+    <p class="note">R2 score on the test data. A score of 1 means perfect prediction.</p>
+    <article class="card"><div id="tblReg" class="table"></div></article>
+  </section>
+
+  <section id="predict" class="wrap block">
+    <h2>Predictor</h2>
+    <p class="note">Enter the readings of one 15 minute period and the Random Forest model will predict the energy usage.</p>
+    <div class="grid2 pred">
+      <form id="form" class="card" novalidate>
+        <div class="row2">
+          <label>Lagging reactive power (kVarh)<input type="number" name="lag_reactive" value="22" min="0" max="100" step="0.01" required></label>
+          <label>Leading reactive power (kVarh)<input type="number" name="lead_reactive" value="0" min="0" max="30" step="0.01" required></label>
+          <label>Lagging power factor (%)<input type="number" name="lag_pf" value="85" min="0" max="100" step="0.01" required></label>
+          <label>Leading power factor (%)<input type="number" name="lead_pf" value="100" min="0" max="100" step="0.01" required></label>
+        </div>
+        <div class="row3">
+          <label>Hour<select name="hour" id="selHour"></select></label>
+          <label>Month<select name="month" id="selMonth"></select></label>
+          <label>Day<select name="day_of_week" id="selDay"></select></label>
+        </div>
+        <div class="presets"><span>Try:</span>
+          <button type="button" data-p="night">Night</button><button type="button" data-p="busy">Busy weekday</button><button type="button" data-p="weekend">Weekend</button>
+        </div>
+        <button class="go" type="submit">Predict usage</button>
+        <p class="error" id="err" role="alert"></p>
+      </form>
+      <article class="card result" id="result"><p class="placeholder">The prediction will be shown here.</p></article>
+    </div>
+  </section>
+
+  <section id="gallery" class="wrap block">
+    <h2>All 10 graphs of the project</h2>
+    <p class="note">These are the same graphs that the notebook creates and that I used in the report.</p>
+    <div class="gallery" id="gallery-grid"></div>
+  </section>
+</main>
+
+<footer><div class="wrap">Dataset: Steel Industry Energy Consumption (UCI / Kaggle / Mendeley). Made with Python, scikit-learn and Flask for INT234 at Lovely Professional University.</div></footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+step,what_I_did,items_affected
+Rename columns,Gave short names to all 11 columns,11
+Missing values,Checked with isna(),0
+Duplicate rows,Checked with duplicated(),0
+Wrong dates (inconsistent data),Moved midnight readings to the correct day and sorted,365
+Day and weekend labels,Compared with the real calendar,0
+Impossible values,Power factor outside 0-100 or negative energy,0
+Possible meter failure,"One row with usage 0 and power factor 0, kept it",1
+Outliers,"Checked with the IQR rule, kept them because they are real values",17474
