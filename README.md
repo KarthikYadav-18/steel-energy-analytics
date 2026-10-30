@@ -1,22 +1,49 @@
 # Steel Plant Electricity Usage Analysis and Prediction
-INT234 Predictive Analytics, CA2 project, Lovely Professional University
 
-The data has 35,040 electricity readings of a steel plant (every 15 minutes, year 2018). The project cleans the data, studies 5 objectives with 10 graphs, trains 4 models to predict the energy usage, and has a small Flask website.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Completed-success)](https://github.com/KarthikYadav-18/steel-energy-analytics)
 
-To run it, read `HOW_TO_RUN.md`. To prepare for the viva, read `EXPLAIN_EVERY_GRAPH.md`.
+INT234 Predictive Analytics, CA2 project, Lovely Professional University.
 
-## Objectives
-1. Do Light, Medium and Maximum load use different energy? (ANOVA)
-2. Do weekends use less energy than weekdays? (t-test)
-3. Which are the busiest hours and months?
-4. How are reactive power and power factor related to usage? (correlation)
-5. Predict the usage with 4 models: Multiple Linear, Polynomial, Decision Tree, Random Forest
+This project analyzes 35,040 electricity readings from a steel plant collected every 15 minutes during 2018. It covers data cleaning, exploratory analysis, statistical testing, predictive modeling, and a lightweight Flask web application for interaction.
 
-## Results
-* Weekend usage is 65.1 percent lower than weekday usage.
-* Best model: Random Forest (R2 = 0.9996, MAE = 0.250 kWh, RMSE = 0.703 kWh).
+## Highlights
+- 5 analytical objectives
+- 10 visualizations
+- 4 predictive models
+- Flask web app with screenshots
+- Report and execution guide included
 
-## Folders
-`data` dataset | `notebooks` main notebook | `visualizations` 10 graphs | `results` numbers | `models` saved model | `app` Flask website | `screenshots` website pictures | `report` Word report
+## Business problem
+The aim is to understand how electricity usage changes across different load conditions, weekdays vs weekends, hourly and monthly demand, and how plant variables such as reactive power and power factor relate to energy consumption. The project also predicts future usage using machine learning.
 
-Dataset: Steel Industry Energy Consumption (UCI, Kaggle, Mendeley).
+## Key results
+- Weekend usage is about 65.1% lower than weekday usage.
+- Best model: Random Forest
+- Metrics: R² = 0.9996, MAE = 0.250 kWh, RMSE = 0.703 kWh.
+
+## Project structure
+- `data` – datasets
+- `notebooks` – analysis notebook
+- `visualizations` – graphs and plots
+- `results` – outputs and metrics
+- `models` – trained model artifact
+- `app` – Flask web app
+- `screenshots` – app screenshots
+- `report` – project report
+- `HOW_TO_RUN.md` – setup and execution instructions
+- `EXPLAIN_EVERY_GRAPH.md` – graph explanations for viva
+
+## Run the project
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Follow the instructions in [HOW_TO_RUN.md](HOW_TO_RUN.md).
+
+## Dataset source
+Steel Industry Energy Consumption dataset from UCI / Kaggle / Mendeley sources.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
